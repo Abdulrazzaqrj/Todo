@@ -3,7 +3,6 @@ package com.example.todo.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
-/** JPA entity mapped to the "tasks" table. */
 @Entity
 @Table(name = "tasks")
 public class Task {
@@ -31,8 +30,11 @@ public class Task {
     @Column(nullable = false, length = 20)
     private Priority priority = Priority.MEDIUM;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDate createdDate;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDate createdAt;
 
     @Column(length = 100)
     private String createdBy;
@@ -47,6 +49,10 @@ public class Task {
 
         if (this.assignedDate == null) {
             this.assignedDate = today;
+        }
+
+        if (this.createdAt == null) {
+            this.createdAt = today;
         }
     }
 
@@ -104,6 +110,14 @@ public class Task {
 
     public LocalDate getCreatedDate() {
         return createdDate;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getCreatedBy() {
