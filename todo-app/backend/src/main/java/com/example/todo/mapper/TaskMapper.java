@@ -45,16 +45,23 @@ public final class TaskMapper {
                         : Priority.MEDIUM
         );
 
-        if (request.status() != null) {
-            task.setStatus(request.status());
-        } else if (task.getStatus() == null) {
-            task.setStatus(TaskStatus.PENDING);
+        task.setStatus(
+                request.status() != null
+                        ? request.status()
+                        : task.getStatus() != null
+                                ? task.getStatus()
+                                : TaskStatus.PENDING
+        );
+
+        if (task.getStage() == null || task.getStage().isBlank()) {
+            task.setStage("TODO");
         }
 
         if (request.createdBy() != null
                 && !request.createdBy().isBlank()) {
             task.setCreatedBy(request.createdBy().trim());
-        } else if (task.getCreatedBy() == null) {
+        } else if (task.getCreatedBy() == null
+                || task.getCreatedBy().isBlank()) {
             task.setCreatedBy("Me");
         }
     }
