@@ -1,3 +1,4 @@
+
 package com.example.todo.model;
 
 import jakarta.persistence.*;
@@ -37,6 +38,9 @@ public class Task {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDate createdAt;
 
+    @Column(name = "stage", nullable = false)
+    private String stage = "TODO";
+
     @Column(length = 100)
     private String createdBy;
 
@@ -44,20 +48,36 @@ public class Task {
     void onCreate() {
         LocalDate today = LocalDate.now();
 
-        if (this.createdDate == null) {
-            this.createdDate = today;
+        if (createdDate == null) {
+            createdDate = today;
         }
 
-        if (this.assignedDate == null) {
-            this.assignedDate = today;
+        if (assignedDate == null) {
+            assignedDate = today;
         }
 
-        if (this.createdAt == null) {
-            this.createdAt = today;
+        if (createdAt == null) {
+            createdAt = today;
         }
 
-        if (this.deadline == null) {
-            this.deadline = today;
+        if (deadline == null) {
+            deadline = today;
+        }
+
+        if (status == null) {
+            status = TaskStatus.PENDING;
+        }
+
+        if (priority == null) {
+            priority = Priority.MEDIUM;
+        }
+
+        if (stage == null || stage.isBlank()) {
+            stage = "TODO";
+        }
+
+        if (createdBy == null || createdBy.isBlank()) {
+            createdBy = "Me";
         }
     }
 
@@ -123,6 +143,14 @@ public class Task {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
     }
 
     public String getCreatedBy() {
