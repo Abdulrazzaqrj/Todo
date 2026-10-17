@@ -17,6 +17,7 @@ public class Task {
     @Column(length = 1000)
     private String description;
 
+    @Column(name = "due_date", nullable = false)
     private LocalDate deadline;
 
     @Column(name = "assigned_date", nullable = false)
@@ -53,6 +54,10 @@ public class Task {
 
         if (this.createdAt == null) {
             this.createdAt = today;
+        }
+
+        if (this.deadline == null) {
+            this.deadline = today;
         }
     }
 
