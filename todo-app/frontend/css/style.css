@@ -1,0 +1,96 @@
+```
+/* =========================================================
+   Task Manager UI - calm teal + mint theme (matches the design)
+   ========================================================= */
+:root {
+  /* ----- default theme: Calm Teal ----- */
+  --primary: #2f5d62;
+  --primary-btn: var(--primary);
+  --accent: #cfe8e0;
+  --accent-hover: #b8dcd1;
+  --accent-text: #24464a;
+  --page: #f3f0ff;
+  --card: #ffffff;
+  --text: #243b3f;
+  --muted: #8aa0a0;
+  --head-text: #667f80;
+  --head: #f5f9f8;
+  --line: #e8efee;
+  --border: #dbe5e3;
+  --danger: #d9605e;
+
+  --high-bg: #fbe6e6;  --high: #d9777a;
+  --med-bg: #fbf0dc;   --med: #c9954a;
+  --low-bg: #e8eefa;   --low: #7b93c9;
+  --prog-bg: #e3eff7;  --prog: #5b8fb9;
+  --done-bg: #e0f2e7;  --done: #58a67a;
+
+  --shadow: 0 20px 60px rgba(40, 60, 70, .14);
+}
+
+/* ----- Ocean Blue (Trello / Jira style) ----- */
+body[data-theme="ocean"] {
+  --primary: #2b5c9e; --accent: #dbe8f8; --accent-hover: #c5daf2; --accent-text: #1f3f6b;
+  --page: #f1f5fa; --text: #1f2d3d; --muted: #8a9bb0; --head-text: #5f7390; --head: #f4f7fb; --line: #e6edf5; --border: #d9e2ee;
+}
+/* ----- Sage Green (Evernote style) ----- */
+body[data-theme="sage"] {
+  --primary: #476b52; --accent: #dcebdd; --accent-hover: #c6dfc9; --accent-text: #2c4a35;
+  --page: #f3f7f3; --text: #25382b; --muted: #8ea194; --head-text: #667d6c; --head: #f5f9f5; --line: #e6eee7; --border: #dbe6dc;
+}
+/* ----- Graphite (Notion / Linear style, neutral) ----- */
+body[data-theme="graphite"] {
+  --primary: #2e3440; --accent: #e7e9ee; --accent-hover: #d7dae2; --accent-text: #2e3440;
+  --page: #f5f6f8; --text: #222833; --muted: #959cab; --head-text: #6b7385; --head: #f6f7f9; --line: #eaecf0; --border: #dfe2e8;
+}
+/* ----- Soft Indigo (Asana / Slack style) ----- */
+body[data-theme="indigo"] {
+  --primary: #4b4a9a; --accent: #e1e0f7; --accent-hover: #cfcdf0; --accent-text: #2f2e6b;
+  --page: #f4f4fb; --text: #232347; --muted: #9393b4; --head-text: #6c6c92; --head: #f6f6fb; --line: #eaeaf4; --border: #dfdfee;
+}
+/* ----- Warm Clay (Todoist style, warm neutrals) ----- */
+body[data-theme="clay"] {
+  --primary: #9b5f48; --accent: #f3e4da; --accent-hover: #ead3c4; --accent-text: #5c3626;
+  --page: #faf5f1; --text: #3a2d27; --muted: #a39489; --head-text: #7d6a5f; --head: #faf6f3; --line: #efe7e1; --border: #e6dbd3;
+}
+
+/* ----- dark mode (works with every theme; must stay after the themes) ----- */
+body.dark {
+  color-scheme: dark;
+  --page: #12151c; --card: #1a1e28; --text: #e8eaf0; --muted: #9aa1b5; --head-text: #b0b6c8;
+  --head: #222733; --line: #2a3040; --border: #343b4e; --accent-text: #e8eaf0;
+  --primary-btn: color-mix(in srgb, var(--primary) 65%, #ffffff);
+  --accent: color-mix(in srgb, var(--primary) 35%, #1a1e28);
+  --accent-hover: color-mix(in srgb, var(--primary) 50%, #1a1e28);
+  --high-bg: #4a2a2e; --med-bg: #4a3d22; --low-bg: #28324f; --prog-bg: #1f3550; --done-bg: #1d4a35;
+  --shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+body.dark .sidebar { background: var(--sidebar-bg, color-mix(in srgb, var(--primary) 45%, #000000)); }
+
+/* =========================================================
+   Dark themes (full dark palettes; JS adds body.dark automatically)
+   ========================================================= */
+/* Midnight Navy */
+body.dark[data-theme="midnight"] {
+  --page: #0b1020; --card: #121a33; --text: #e6ebff; --muted: #8f9bc4; --head-text: #a9b4dc;
+  --head: #19244a; --line: #222e57; --border: #2d3a6b; --sidebar-bg: #0d1530;
+  --primary-btn: #5b7cf5; --accent: #1e2d5e; --accent-hover: #29396f; --accent-text: #dfe6ff;
+}
+/* Deep Forest */
+body.dark[data-theme="forest"] {
+  --page: #0c1512; --card: #13211c; --text: #e3f2ea; --muted: #8fb3a2; --head-text: #a8cdbb;
+  --head: #1a2d26; --line: #213a31; --border: #2c4a3f; --sidebar-bg: #0a1310;
+  --primary-btn: #2f9e74; --accent: #1c3a2f; --accent-hover: #25503f; --accent-text: #d9f5e8;
+}
+/* Plum Night */
+body.dark[data-theme="plum"] {
+  --page: #120d1f; --card: #1b1430; --text: #efe9ff; --muted: #a89bc9; --head-text: #c0b4de;
+  --head: #251c42; --line: #2f2552; --border: #3b2f66; --sidebar-bg: #0f0a1c;
+  --primary-btn: #7c5ce0; --accent: #2e2358; --accent-hover: #3b2d70; --accent-text: #ece4ff;
+}
+/* Obsidian Amber (warm black) */
+body.dark[data-theme="obsidian"] {
+  --page: #0f0e0c; --card: #181613; --text: #f3ece2; --muted: #a79c8c; --head-text: #c4b8a6;
+  --head: #221f1a; --line: #2b2721; --border: #38332b; --sidebar-bg: #0b0a09;
+  --primary-btn: #b97a1f; --accent: #3a2e1a; --accent-hover: #4a3a20; --accent-text: #fbe9c8;
+}
