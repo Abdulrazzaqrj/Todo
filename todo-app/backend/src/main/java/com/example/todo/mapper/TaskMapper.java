@@ -9,6 +9,9 @@ import com.example.todo.model.TaskStatus;
 
 import java.time.LocalDate;
 
+/**
+ * Converts between Task entities and DTOs.
+ */
 public final class TaskMapper {
 
     private TaskMapper() {
@@ -46,10 +49,6 @@ public final class TaskMapper {
             task.setStatus(request.status());
         } else if (task.getStatus() == null) {
             task.setStatus(TaskStatus.PENDING);
-        }
-
-        if (task.getStage() == null || task.getStage().isBlank()) {
-            task.setStage("TODO");
         }
 
         if (request.createdBy() != null
